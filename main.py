@@ -4,8 +4,23 @@ MAX_LINES = 3
 MAX_BET = 1000
 MIN_BET = 30
 
-ROWS=3
-COLS=3
+ROWS = 3
+COLS = 3
+
+symbol_count = {
+    "A": 2,
+    "B": 4,
+    "C": 6,
+    "D": 8
+
+}
+
+
+def get_slot_machine_spin(ROWS, COLS, symbols):
+    all_symbols = []
+    for symbol, symbol_count in symbols.items():
+        for _ in range(symbol_count):
+            all_symbols.append()
 
 
 def deposit():
