@@ -1,16 +1,72 @@
-# This is a sample Python script.
+import random
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+MAX_LINES = 3
+MAX_BET = 1000
+MIN_BET = 30
+
+ROWS=3
+COLS=3
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def deposit():
+    while True:
+        amount = input("How much you want to deposit :")
+        if amount.isdigit():
+            amount = int(amount)
+            if amount > 0:
+                break
+            else:
+                print("amount must be greater than zero")
+        else:
+            print("enter a number")
+
+    return amount
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+def get_lines():
+    while True:
+        lines = input("enter number of lines to bet on (1-" + str(MAX_LINES) + ")? ")
+        if lines.isdigit():
+            lines = int(lines)
+            if 1 <= lines <= MAX_LINES:
+                break
+            else:
+                print("enter valid number of lines ")
+        else:
+            print("enter a number")
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    return lines
+
+
+def get_bet():
+    while True:
+        bet = input("How much you want to bet :")
+        if bet.isdigit():
+            bet = int(bet)
+            if MIN_BET <= bet <= MAX_BET:
+                break
+            else:
+                print(f"BET must be between {MIN_BET} and {MAX_BET} ")
+        else:
+            print("enter a number")
+
+    return bet
+
+
+def main():
+    balance = deposit()
+    lines = get_lines()
+    while True:
+        bet = get_bet()
+        total_bet = bet * lines
+
+        if total_bet > balance:
+            print(
+                f"You do not have enough to bet that amount, your current balance is: ${balance}")
+        else:
+            break
+
+    print(f"Your balance is ${bet}on {lines} lines . total bet is equal to: {total_bet} ")
+
+
+main()
